@@ -21,7 +21,7 @@ Admin.login = (username,password,result) => {
         }
         if(res.length){
             console.log("found admin: ", res[0]);
-            result(null,"SUCCESS");
+            result(null,{...res[0]});
             return;
         }
         if(!res.length){

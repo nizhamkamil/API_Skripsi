@@ -1,21 +1,21 @@
 const sql = require("./db.js");
+const { error } = require("console");
 
 const Kelas = function(kelas){
     this.nama_kelas = kelas.nama_kelas;
     this.deskripsi_kelas = kelas.deskripsi_kelas;
 }
 
-Kelas.create = (id, result) => {
+Kelas.create = (newKelas, result) => {
     let query = "INSERT INTO kelas SET ?";
-
-    sql.query(query, id, (err,res) => {
+    sql.query(query, newKelas, (err,res) => {
         if(err){
             console.log("error: ", err);
             result(err,null);
             return;
         }
-        console.log("created kelas: ", {...id});
-        result(null,{...id});
+        console.log("created kelas: ", {...newKelas});
+        result(null,{...newKelas});
     })
 }
 
@@ -32,6 +32,8 @@ Kelas.getAll = result => {
         result(null,res);
     })
 }
+
+
 
 Kelas.deleteById = (id,result) => {
     sql.query("DELETE FROM kelas WHERE id_kelas = ?", id, (err,res) => {

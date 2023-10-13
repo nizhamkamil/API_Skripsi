@@ -1,4 +1,4 @@
-const Kelas = require("../models/kelas_model");
+const Kelas = require("../controllers/kelas_controller.js");
 
 var router = require("express").Router();
 

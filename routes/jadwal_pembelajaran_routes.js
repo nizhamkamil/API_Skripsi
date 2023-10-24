@@ -8,6 +8,8 @@ router.post("/", Jadwal.create);
 
 //GET
 router.get("/", Jadwal.getAll);
+router.get("/guru/:id", Jadwal.getByIdGuru);
+router.get("/murid/:id", Jadwal.getByIdMurid);
 
 //PUT
 router.put("/:id", Jadwal.updateById);

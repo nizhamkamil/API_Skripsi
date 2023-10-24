@@ -24,6 +24,7 @@ const murid = require("./routes/murid_routes.js");
 // const kelas_foto = require("./routes/kelas_foto_routes.js");
 const pendaftaran = require("./routes/pendaftaran_routes.js");
 const ruangan = require("./routes/ruangan_routes.js");
+const ujian = require("./routes/ujian_routes.js");
 
 
 app.use("/tutorial",tutorialRoutes);
@@ -34,6 +35,7 @@ app.use("/jadwal_pembelajaran",jadwal_pembelajaran);
 app.use("/kelas",kelas);
 app.use("/murid",murid);
 // app.use("/kelas_foto",kelas_foto);
+app.use("/ujian",ujian);
 app.use("/pendaftaran",pendaftaran);
 app.use("/ruangan",ruangan);
 

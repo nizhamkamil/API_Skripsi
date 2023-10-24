@@ -37,6 +37,38 @@ Jadwal.getAll = result => {
     });
 }
 
+Jadwal.getByIdGuru = (id,result) => {
+    sql.query("SELECT * FROM jadwal_pembelajaran WHERE id_guru = ?", id, (err,res) => {
+        if(err){
+            console.log("error", err);
+            result(err,null);
+            return;
+        }
+        if(res.length){
+            console.log("found jadwal: ", res[0]);
+            result(null,res);
+            return;
+        }
+        result({kind: "not_found"},null);
+    });
+}
+
+Jadwal.getByIdMurid = (id,result) => {
+    sql.query("SELECT * FROM jadwal_pembelajaran WHERE id_murid = ?", id, (err,res) => {
+        if(err){
+            console.log("error", err);
+            result(err,null);
+            return;
+        }
+        if(res.length){
+            console.log("found jadwal: ", res[0]);
+            result(null,res);
+            return;
+        }
+        result({kind: "not_found"},null);
+    });
+}
+
 Jadwal.deleteById = (id,result) => {
     sql.query("DELETE FROM jadwal_pembelajaran WHERE id_jadwal = ?", id, (err,res) => {
         if(err){

@@ -30,6 +30,30 @@ exports.getAll = (req,res) => {
     })
 }
 
+exports.getByIdGuru = (req,res) => {
+    Jadwal.getByIdGuru(req.params.id,(err,data) => {
+        if(err){
+            res.status(500).send({
+                message: err.message || "Some error occured while retrieving jadwal."
+            })
+        }else{
+            res.send(data);
+        }
+    })
+}
+
+exports.getByIdMurid = (req,res) => {
+    Jadwal.getByIdMurid(req.params.id,(err,data) => {
+        if(err){
+            res.status(500).send({
+                message: err.message || "Some error occured while retrieving jadwal."
+            })
+        }else{
+            res.send(data);
+        }
+    })
+}
+
 exports.deleteById = (req,res) => {
     Jadwal.deleteById(req.params.id,(err,data) => {
         //NAMA YANG DI PARAMS ID HARUS SAMA DENGAN PEMANGGILAN YANG DI ROUTES 

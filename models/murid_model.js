@@ -64,6 +64,23 @@ Murid.getAll = result => {
     });
 }
 
+//Get Murid By ID GURU
+Murid.selectById = (id,result) => {
+    sql.query("SELECT DISTINCT m.* FROM murid m JOIN jadwal_pembelajaran j ON m.id_murid = j.id_murid JOIN guru g ON g.id_guru = j.id_guru WHERE g.id_guru = ?", id, (err,res) => {
+        if(err){
+            console.log("error: ", err);
+            result(null,err);
+            return;
+        }
+        if(res.length){
+            console.log("found murid: ", res[0]);
+            result(null,res);
+            return;
+        }
+        result({kind: "not_found"},null);
+    });
+}
+
 Murid.deleteById = (id,result) => {
     sql.query("DELETE FROM murid WHERE id_murid = ?", id, (err,res) => {
         if(err){
@@ -95,5 +112,7 @@ Murid.updateById = (id,murid,result) => {
         result(null,{...murid});
     });
 }
+
+
 
 module.exports = Murid;

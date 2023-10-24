@@ -34,6 +34,19 @@ exports.getAll = (req,res) => {
     })
 }
 
+exports.getById = (req,res) => {
+    Murid.selectById(req.params.id,(err,data) => {
+        console.log(req.params.id + 'ini IDNYA')
+        if(err){
+            res.status(500).send({
+                message: err.message || "Some error occured while retrieving murid."
+            })
+        }else{
+            res.send(data);
+        }
+    })
+}
+
 exports.login = (req,res) => {
     Murid.login(req.body.username,req.body.password,(err,data) => {
         if(err){

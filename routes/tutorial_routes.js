@@ -1,7 +1,6 @@
-const tutorial = require("/NodeJs Test/controllers/tutorial_controller");
+const tutorial = require("../controllers/tutorial_controller");
 
 var router = require("express").Router();
-
 
 //POST
 router.post("/", tutorial.create);

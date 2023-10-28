@@ -1,4 +1,4 @@
-const Admin = require("/NodeJs Test/controllers/admin_controller");
+const Admin = require("../controllers/admin_controller");
 
 var router = require("express").Router();
 

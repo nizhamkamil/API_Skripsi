@@ -1,4 +1,4 @@
-const Ruangan = require("/NodeJs Test/controllers/ruangan_controller");
+const Ruangan = require("../controllers/ruangan_controller");
 
 var router = require("express").Router();
 

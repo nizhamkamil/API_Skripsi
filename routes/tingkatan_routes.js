@@ -1,4 +1,4 @@
-const Tingkatan = require("/NodeJs Test/controllers/tingkatan_controller");
+const Tingkatan = require("../controllers/tingkatan_controller");
 
 var router = require("express").Router();
 
@@ -7,7 +7,6 @@ router.post("/", Tingkatan.create);
 
 //GET
 router.get("/", Tingkatan.getAll);
-
 
 //PUT
 router.put("/:id", Tingkatan.updateById);

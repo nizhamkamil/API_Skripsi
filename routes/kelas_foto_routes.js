@@ -5,7 +5,7 @@ var router = require("express").Router();
 
 //POST
 router.post("/", KelasFoto.create);
-router.post("/upload", upload.single("photo"), KelasFoto.upload);
+router.post("/upload", upload.array("photo", 10), KelasFoto.upload);
 
 //GET
 router.get("/", KelasFoto.getAll);

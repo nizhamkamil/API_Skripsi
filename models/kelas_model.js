@@ -2,6 +2,7 @@ const sql = require("./db.js");
 const { error } = require("console");
 
 const Kelas = function (kelas) {
+  this.id_kelas = kelas.id_kelas;
   this.nama_kelas = kelas.nama_kelas;
   this.deskripsi_kelas = kelas.deskripsi_kelas;
 };
@@ -67,7 +68,7 @@ Kelas.updateById = (id, kelas, result) => {
         return;
       }
       console.log(res.affectedRows);
-      result(null, res);
+      result(null, { ...kelas });
     }
   );
 };

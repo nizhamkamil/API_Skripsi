@@ -35,11 +35,11 @@ exports.getByKelas = (req, res) => {
 };
 
 exports.upload = (req, res) => {
+  const filenames = req.files.map((file) => file.filename);
   res.json({
-    message: res.req.file.filename,
+    message: filenames,
   });
 };
-
 exports.getAll = (req, res) => {
   KelasFoto.getAll((err, data) => {
     if (err) {

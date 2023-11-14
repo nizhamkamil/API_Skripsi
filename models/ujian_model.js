@@ -111,7 +111,7 @@ Ujian.updateById = (id, ujian, result) => {
         return;
       }
       console.log(res.affectedRows);
-      result(null, res);
+      result(null, { ...ujian });
     }
   );
 };

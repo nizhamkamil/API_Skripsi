@@ -54,6 +54,21 @@ exports.getByIdGuru = (req, res) => {
         message: err.message || "Some error occured while retrieving jadwal.",
       });
     } else {
+      console.log(data[0].jam_selesai);
+      data.forEach((item) => {
+        const dateStr = item.jam_mulai;
+        const dateStr2 = item.jam_selesai;
+        const localDate = new Date(dateStr);
+        const localDate2 = new Date(dateStr2);
+        localDate.setMinutes(
+          localDate.getMinutes() - localDate.getTimezoneOffset()
+        );
+        localDate2.setMinutes(
+          localDate.getMinutes() - localDate.getTimezoneOffset()
+        );
+        item.jam_mulai = localDate.toISOString();
+        item.jam_selesai = localDate2.toISOString();
+      });
       res.send(data);
     }
   });
@@ -66,6 +81,21 @@ exports.getByIdMurid = (req, res) => {
         message: err.message || "Some error occured while retrieving jadwal.",
       });
     } else {
+      console.log(data[0].jam_selesai);
+      data.forEach((item) => {
+        const dateStr = item.jam_mulai;
+        const dateStr2 = item.jam_selesai;
+        const localDate = new Date(dateStr);
+        const localDate2 = new Date(dateStr2);
+        localDate.setMinutes(
+          localDate.getMinutes() - localDate.getTimezoneOffset()
+        );
+        localDate2.setMinutes(
+          localDate.getMinutes() - localDate.getTimezoneOffset()
+        );
+        item.jam_mulai = localDate.toISOString();
+        item.jam_selesai = localDate2.toISOString();
+      });
       res.send(data);
     }
   });

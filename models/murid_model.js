@@ -54,7 +54,7 @@ Murid.create = (newMurid, result) => {
 };
 
 Murid.getAll = (result) => {
-  let query = "SELECT * FROM murid";
+  let query = "SELECT * FROM murid WHERE nama IS NOT NULL";
   sql.query(query, (err, res) => {
     if (err) {
       console.log("error: ", err);
@@ -105,7 +105,7 @@ Murid.deleteById = (id, result) => {
 
 Murid.updateById = (id, murid, result) => {
   sql.query(
-    "UPDATE murid SET nama = ?, username = ?, password = ?, alamat = ?, email = ?, no_telepon = ?, jenis_kelamin = ?, tanggal_masuk = ?, agama = ?, kewarganegaraan = ?, status_daftar = ?, nama_wali = ?, tanggal_lahir = ? WHERE id_murid = ?",
+    "UPDATE murid SET nama = ?, username = ?, password = ?, alamat = ?, email = ?, no_telepon = ?, jenis_kelamin = ?, tanggal_masuk = ?, agama = ?, kewarganegaraan = ?, status_daftar = ?, nama_wali = ?, tanggal_lahir = ?, tempat_lahir = ?, tipe_pembelajaran = ? WHERE id_murid = ?",
     [
       murid.nama,
       murid.username,
@@ -120,6 +120,8 @@ Murid.updateById = (id, murid, result) => {
       murid.status_daftar,
       murid.nama_wali,
       murid.tanggal_lahir,
+      murid.tempat_lahir,
+      murid.tipe_pembelajaran,
       id,
     ],
     (err, res) => {

@@ -55,7 +55,7 @@ Jadwal.getAll = (result) => {
 
 Jadwal.getByIdGuru = (id, result) => {
   sql.query(
-    "SELECT * FROM jadwal_pembelajaran WHERE id_guru = ?",
+    "SELECT j.id_jadwal, j.jam_mulai, j.jam_selesai, j.hari, j.id_guru, g.nama AS nama_guru, j.id_murid, m.nama AS nama_murid, j.id_kelas, k.nama_kelas, j.id_tingkatan, t.nama_tingkatan, j.id_ruangan, r.nama_ruangan FROM jadwal_pembelajaran j INNER JOIN ruangan r ON j.id_ruangan = r.id_ruangan INNER JOIN kelas k ON j.id_kelas = k.id_kelas INNER JOIN tingkatan t ON j.id_tingkatan = t.id_tingkatan INNER JOIN guru g ON j.id_guru = g.id_guru INNER JOIN murid m ON j.id_murid = m.id_murid WHERE g.id_guru = ? ORDER BY j.id_jadwal",
     id,
     (err, res) => {
       if (err) {
@@ -75,7 +75,7 @@ Jadwal.getByIdGuru = (id, result) => {
 
 Jadwal.getByIdMurid = (id, result) => {
   sql.query(
-    "SELECT * FROM jadwal_pembelajaran WHERE id_murid = ?",
+    "SELECT j.id_jadwal, j.jam_mulai, j.jam_selesai, j.hari, j.id_guru, g.nama AS nama_guru, j.id_murid, m.nama AS nama_murid, j.id_kelas, k.nama_kelas, j.id_tingkatan, t.nama_tingkatan, j.id_ruangan, r.nama_ruangan FROM jadwal_pembelajaran j INNER JOIN ruangan r ON j.id_ruangan = r.id_ruangan INNER JOIN kelas k ON j.id_kelas = k.id_kelas INNER JOIN tingkatan t ON j.id_tingkatan = t.id_tingkatan INNER JOIN guru g ON j.id_guru = g.id_guru INNER JOIN murid m ON j.id_murid = m.id_murid WHERE m.id_murid = ? ORDER BY j.id_jadwal",
     id,
     (err, res) => {
       if (err) {

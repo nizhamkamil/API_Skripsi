@@ -98,6 +98,8 @@ exports.updateById = (req, res) => {
     status_daftar: req.body.status_daftar,
     nama_wali: req.body.nama_wali,
     tanggal_lahir: req.body.tanggal_lahir,
+    tempat_lahir: req.body.tempat_lahir,
+    tipe_pembelajaran: req.body.tipe_pembelajaran,
   });
 
   Murid.updateById(id, murid, (err, data) => {

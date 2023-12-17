@@ -46,35 +46,43 @@ UjianAll.getAll = (result) => {
 };
 
 Ujian.getByIdMurid = (id, result) => {
-  sql.query("SELECT * FROM ujian WHERE id_murid = ?", id, (err, res) => {
-    if (err) {
-      console.log("error", err);
-      result(err, null);
-      return;
+  sql.query(
+    "SELECT u.id_ujian, u.id_guru, g.nama AS nama_guru, u.id_murid, m.nama AS nama_murid, u.status_ujian, u.hasil_ujian FROM ujian u INNER JOIN guru g ON u.id_guru = g.id_guru INNER JOIN murid m ON u.id_murid = m.id_murid WHERE m.id_murid = ? ORDER BY u.id_ujian",
+    id,
+    (err, res) => {
+      if (err) {
+        console.log("error", err);
+        result(err, null);
+        return;
+      }
+      if (res.length) {
+        console.log("found ujian: ", res[0]);
+        result(null, res);
+        return;
+      }
+      result({ kind: "not_found" }, null);
     }
-    if (res.length) {
-      console.log("found ujian: ", res[0]);
-      result(null, res);
-      return;
-    }
-    result({ kind: "not_found" }, null);
-  });
+  );
 };
 
 Ujian.getByIdGuru = (id, result) => {
-  sql.query("SELECT * FROM ujian WHERE id_guru = ?", id, (err, res) => {
-    if (err) {
-      console.log("error", err);
-      result(err, null);
-      return;
+  sql.query(
+    "SELECT u.id_ujian, u.id_guru, g.nama AS nama_guru, u.id_murid, m.nama AS nama_murid, u.status_ujian, u.hasil_ujian FROM ujian u INNER JOIN guru g ON u.id_guru = g.id_guru INNER JOIN murid m ON u.id_murid = m.id_murid WHERE g.id_guru = ? ORDER BY u.id_ujian",
+    id,
+    (err, res) => {
+      if (err) {
+        console.log("error", err);
+        result(err, null);
+        return;
+      }
+      if (res.length) {
+        console.log("found ujian: ", res[0]);
+        result(null, res);
+        return;
+      }
+      result({ kind: "not_found" }, null);
     }
-    if (res.length) {
-      console.log("found ujian: ", res[0]);
-      result(null, res);
-      return;
-    }
-    result({ kind: "not_found" }, null);
-  });
+  );
 };
 
 Ujian.deleteById = (id, result) => {
